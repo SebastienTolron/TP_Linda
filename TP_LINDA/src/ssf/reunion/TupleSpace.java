@@ -1,5 +1,8 @@
 package ssf.reunion;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+
 /**
 * TP 1 Introduction a larchitecture Linda
 * @author Sebastien Tolron sebastien.tolron@etu.univ-savoie.fr>
@@ -10,6 +13,10 @@ package ssf.reunion;
 
 public class TupleSpace {
 
+	
+	private Hashtable<Object, ArrayList<Object>> hashT;
+	
+	
 /* Declaration des methodes */
 	
 /** 
@@ -18,8 +25,10 @@ public class TupleSpace {
 *  @return La valeur du tuple
 */
 	
-	public void rd (){
+	public Object rd (Object clef){
 		
+		ArrayList<Object> values = this.hashT.get(clef);
+		return values.get(values.size()-1);	
 	}	
 	
 	
@@ -42,12 +51,28 @@ public class TupleSpace {
 */
 	
 	
-	public void out (){
+	public void out (Object clef, Object value ){
 		
-	}
+			if(this.hashT.containsKey(clef)){
+			this.hashT.get(clef).add(value);
+			}
+			else{
+			ArrayList<Object> values = new ArrayList<Object>();
+			values.add(value);
+			this.hashT.put(clef, values);
+		
+			}
+			System.out.println(" Le tuple avec la clef "+clef+" a été ajouté");
+			}
+		
+		
+		
+	
 	
 
-
+	public TupleSpace(){
+		this.hashT = new Hashtable<Object, ArrayList<Object>>();
+	}
 	
 	
 }
