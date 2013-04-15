@@ -1,4 +1,6 @@
-TP_Linda
+TP 1 d'architectures logicielles : Linda
 ========
 
-Tp de linda
+	Planification d'une réunion de travail :
+	
+	
