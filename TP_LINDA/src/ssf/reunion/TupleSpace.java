@@ -14,7 +14,7 @@ import java.util.Hashtable;
 public class TupleSpace {
 
 	
-	private Hashtable<Object, ArrayList<Object>> hashT;
+	private Hashtable<Object, ArrayList<Tuple>> hashT;
 	
 	
 /* Declaration des methodes */
@@ -26,10 +26,17 @@ public class TupleSpace {
 */
 	
 	public Object rd (Object clef){
+		try {
+			
 		
-		ArrayList<Object> values = this.hashT.get(clef);
-		return values.get(values.size()-1);	
-	}	
+		ArrayList<Tuple> values = this.hashT.get(clef);
+		return values.get(values.size()-1).ToString();	
+		}
+	catch(Exception e){
+		System.err.println("La clef ne correspond a aucune valeur dans l'espace de tuple");
+		return null;
+		}
+	}
 	
 	
 /** 
@@ -39,8 +46,27 @@ public class TupleSpace {
 */
 	
 	
-	public void in (){
+	public Object in (Object clef ){
+	
 		
+		try{
+			int last = this.hashT.get(clef).size() - 1;
+			
+			Tuple value = this.hashT.get(clef).get(last);			
+			this.hashT.get(clef).remove(last);
+			
+			
+			if(this.hashT.get(clef).isEmpty()){
+				
+			this.hashT.remove(clef);
+			}
+			return value.ToString();
+			}
+		
+		catch(Exception e){
+			System.err.println("La clef ne correspond a aucune valeur dans l'espace de tuple");
+			return null;
+			}
 	}
 
 	
@@ -51,13 +77,13 @@ public class TupleSpace {
 */
 	
 	
-	public void out (Object clef, Object value ){
+	public void out (Object clef, Tuple value ){
 		
 			if(this.hashT.containsKey(clef)){
 			this.hashT.get(clef).add(value);
 			}
 			else{
-			ArrayList<Object> values = new ArrayList<Object>();
+			ArrayList<Tuple> values = new ArrayList<Tuple>();
 			values.add(value);
 			this.hashT.put(clef, values);
 		
@@ -71,7 +97,7 @@ public class TupleSpace {
 	
 
 	public TupleSpace(){
-		this.hashT = new Hashtable<Object, ArrayList<Object>>();
+		this.hashT = new Hashtable<Object, ArrayList<Tuple>>();
 	}
 	
 	
