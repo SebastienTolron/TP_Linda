@@ -7,10 +7,8 @@ import java.util.Date;
 * TP 1 Introduction a larchitecture Linda
 * @author Sebastien Tolron sebastien.tolron@etu.univ-savoie.fr>
 * @author Samuel De Francesco <samuel.defrancesco@etu.univ-savoie.fr>
-* @author François Profizi <francois.profizi@etu.univ-savoie.fr>
+* @author Franï¿½ois Profizi <francois.profizi@etu.univ-savoie.fr>
 */
-
-
 public class Tuple {
 	
 	/* Declaration des attributs */
@@ -20,7 +18,7 @@ public class Tuple {
 	public Date date_exclues;
 	
 	/** 
-	 * Méthode qui convertit un tuple en string
+	 * Mï¿½thode qui convertit un tuple en string
 	* 
 	*  @return La valeur du tuple en string
 	*/
@@ -35,11 +33,38 @@ public class Tuple {
 		
 	}
 
+		/* Constructeur */
+	
 	public Tuple(String autheur, Date date_preference, Date date_exclues) {
 		super();
 		this.autheur = autheur;
 		this.date_preference = date_preference;
 		this.date_exclues = date_exclues;
 	}
+
+	public Tuple(String autheur) {
+		super();
+		this.autheur = autheur;
+	}
+
+	public Tuple(Date date_preference, Date date_exclues) {
+		super();
+		this.date_preference = date_preference;
+		this.date_exclues = date_exclues;
+	}
+
+	public Tuple(String autheur, Date date_exclues) {
+		super();
+		this.autheur = autheur;
+		this.date_exclues = date_exclues;
+	}
+
+
+	public Tuple(Date date_exclues) {
+		super();
+		this.date_exclues = date_exclues;
+	}
+
+
 
 }
